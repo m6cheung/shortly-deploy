@@ -94,7 +94,7 @@ module.exports = function(grunt) {
       },
     shell: {
       prodServer: {
-        command: ['ssh root@104.236.180.200', 'michaeltiffany'].join('&&')
+        command: ['ssh root@104.236.180.200', 'nodemon /root/shortly-deploy/server.js'].join('&&')
       }
     }
   });
@@ -124,9 +124,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', function(n) {
     if (grunt.option('prod')) {
-      grunt.task.run(['build', 'gitchange', 'shell', 'server-dev' ]); //this starts the server
+      grunt.task.run(['build', 'gitchange', 'shell' ]); //this starts the server
     } else {
-      grunt.task.run(['build', 'shell', 'server-dev' ]);
+      grunt.task.run(['build', 'shell' ]);
     }
   });
 
