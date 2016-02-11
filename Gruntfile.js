@@ -94,7 +94,7 @@ module.exports = function(grunt) {
       },
     shell: {
       prodServer: {
-        command: ['ssh root@104.236.180.200', 'michaeltiffany']
+        command: ['ssh root@104.236.180.200', 'michaeltiffany'].join('&&')
       }
     }
   });
