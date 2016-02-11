@@ -140,7 +140,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['mochaTest','concat', 'uglify','cssmin','eslint','gitadd','gitcommit']);
+  grunt.registerTask('build', ['mochaTest', 'concat', 'uglify', 'cssmin', 'eslint', 'gitadd', 'gitcommit', 'gitpush']);
 
   grunt.registerTask('default', ['build']);
 
