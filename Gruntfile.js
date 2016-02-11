@@ -83,6 +83,15 @@ module.exports = function(grunt) {
         }
       }
     },
+    gitpush: {
+        your_target: {
+          options: {
+            remote: 'live',
+            branch: 'master'
+            // Target-specific options go here. 
+          }
+        }
+      },
     shell: {
       prodServer: {
       }
