@@ -38,6 +38,7 @@
     "grunt-eslint": "^17.3.2",
     "grunt-git": "^0.3.7",
     "grunt-npm-install": "^0.2.0",
+    "grunt-shell": "^0.6.4",
     "supertest": "^0.10.0"
   }
 }
