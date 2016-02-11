@@ -2,8 +2,14 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: ['public/client/**/*.js', 'public/lib/**/*.js'],
+        dest: 'public/dist/main.js',
+      },
     },
-
     mochaTest: {
       test: {
         options: {
@@ -92,8 +98,9 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', [
-  ]);
+  grunt.registerTask('build', ['concat','uglify']);
+
+  grunt.registerTask('default', ['build']);
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
