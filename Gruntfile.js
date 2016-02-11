@@ -125,7 +125,6 @@ module.exports = function(grunt) {
     if (grunt.option('prod')) {
       console.log('I RAN-------------->TOP');
       // add your production server task here
-      console.log('I RAN-------------->BOTTOM');
       grunt.task.run(['build']);
 
     }
