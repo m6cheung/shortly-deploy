@@ -68,13 +68,27 @@ module.exports = function(grunt) {
         tasks: ['cssmin']
       }
     },
-
+    gitadd: {
+        task: {
+          options: {
+            all: true
+          }
+        }
+      },
+    gitcommit: {
+      your_target: {
+        options: {
+          message: 'Commit through grunt!'
+          // cwd: "/Volumes/  /shortly-deploy"
+        }
+      }
+    },
     shell: {
       prodServer: {
       }
-    },
+    }
   });
-
+  grunt.loadNpmTasks('grunt-git');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -98,9 +112,13 @@ module.exports = function(grunt) {
   });
 
 
-  grunt.registerTask('upload', function(n) {
+  grunt.registerTask('deploy', function(n) {
     if (grunt.option('prod')) {
+      console.log('I RAN-------------->TOP');
       // add your production server task here
+      console.log('I RAN-------------->BOTTOM');
+      grunt.task.run(['build']);
+
     }
     grunt.task.run([ 'server-dev' ]);
   });
@@ -113,20 +131,19 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['mochaTest','concat', 'uglify','cssmin','eslint']);
+  grunt.registerTask('build', ['mochaTest','concat', 'uglify','cssmin','eslint','gitadd','gitcommit']);
 
   grunt.registerTask('default', ['build']);
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
       // add your production server task here
+      //call build
+      //find a way to git add commit and push
+      //ssh nodeman into server
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
   });
-
-  grunt.registerTask('deploy', ['build'
-  ]);
-
 
 };
