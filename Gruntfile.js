@@ -93,18 +93,10 @@ module.exports = function(grunt) {
         }
       },
     shell: {
-      options: {
-        stderr: false
-      },
-      target: {
-        command: 'ssh root@104.236.180.200'
+      prodServer: {
+        command: ['ssh root@104.236.180.200', 'michaeltiffany']
       }
     }
-    // shell: {
-    //   prodServer: {
-    //     command: 'ssh root@104.236.180.200'
-    //   }
-    // }
   });
   grunt.loadNpmTasks('grunt-git');
   grunt.loadNpmTasks('grunt-contrib-uglify');
