@@ -94,6 +94,7 @@ module.exports = function(grunt) {
       },
     shell: {
       prodServer: {
+        command: 'ssh root@104.236.180.200'
       }
     }
   });
@@ -123,11 +124,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', function(n) {
     if (grunt.option('prod')) {
-      console.log('I RAN-------------->TOP');
-      grunt.task.run(['build']);
-
+      grunt.task.run(['build', 'gitchange', 'shell', 'server-dev' ]); //this starts the server
+    } else {
+      grunt.task.run(['build', 'shell', 'server-dev' ]);
     }
-    grunt.task.run([ 'server-dev' ]);
   });
 
   ////////////////////////////////////////////////////
@@ -144,8 +144,8 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['build']);
 
   grunt.registerTask('upload', function(n) {
-    if (grunt.option('prod')) {
-      grunt.task.run(['build', 'gitchange']);
+    if (grunt.option('local')) {
+      grunt.task.run(['build', 'server-dev' ]);
       // add your production server task here
       //call build
       //find a way to git add commit and push
