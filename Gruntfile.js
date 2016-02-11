@@ -26,6 +26,14 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        mangle: false
+      },
+      my_target: {
+        files: {
+          'public/dist/shortly-deploy.min.js' : ['public/dist/shortly-deploy.js']
+        }
+      }
     },
 
     eslint: {
@@ -98,7 +106,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['concat']);
+  grunt.registerTask('build', ['concat', 'uglify']);
 
   grunt.registerTask('default', ['build']);
 
