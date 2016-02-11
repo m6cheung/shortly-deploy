@@ -138,12 +138,14 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['mochaTest', 'concat', 'uglify', 'cssmin', 'eslint', 'gitadd', 'gitcommit', 'gitpush']);
+  grunt.registerTask('build', ['mochaTest', 'concat', 'uglify', 'cssmin', 'eslint']);
+  grunt.registerTask('gitchange', ['gitadd', 'gitcommit','gitpush']);
 
   grunt.registerTask('default', ['build']);
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
+      grunt.task.run(['build', 'gitchange']);
       // add your production server task here
       //call build
       //find a way to git add commit and push
