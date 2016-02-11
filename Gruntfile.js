@@ -37,12 +37,19 @@ module.exports = function(grunt) {
     },
 
     eslint: {
-      target: [
-        // Add list of files to lint here
-      ]
+      target: ['public/dist/shortly-deploy.min.js']
     },
 
     cssmin: {
+      options: {
+        shorthandCompacting: false,
+        roundingPrecision: -1
+      },
+      target: {
+        files: {
+          'public/dist/style.min.css': ['public/style.css']
+        }
+      }
     },
 
     watch: {
@@ -106,7 +113,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['concat', 'uglify']);
+  grunt.registerTask('build', ['mochaTest','concat', 'uglify','cssmin','eslint']);
 
   grunt.registerTask('default', ['build']);
 
@@ -118,8 +125,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('deploy', [
-    // add your deploy tasks here
+  grunt.registerTask('deploy', ['build'
   ]);
 
 
