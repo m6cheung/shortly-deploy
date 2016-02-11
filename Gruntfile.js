@@ -7,7 +7,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: ['public/client/**/*.js'],
-        dest: 'public/dist/main.js',
+        dest: 'public/dist/<%= pkg.name %>.js',
       },
     },
     mochaTest: {
