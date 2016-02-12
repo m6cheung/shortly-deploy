@@ -124,9 +124,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', function(n) {
     if (grunt.option('prod')) {
-      grunt.task.run(['build', 'gitchange', 'shell' ]); //this starts the server
+      grunt.task.run(['build', 'gitchange']); //this starts the server
     } else {
-      grunt.task.run(['build', 'shell' ]);
+      grunt.task.run(['build']);
     }
   });
 
