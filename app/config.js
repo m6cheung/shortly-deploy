@@ -1,8 +1,18 @@
 
 // var path = require('path');
-var db = require('mongoose');
+var mongoose = require('mongoose');
 
-db.connect('mongodb://localhost/mtdb');
+mongoose.connect('mongodb://localhost/mtdb');
+
+var db = mongoose.connection
+db.on('error', console.error.bind(console, 'connection err:'));
+db.once('open', function() {
+  console.log('Mongodb connection is open');
+});
+
+module.exports = db;
+
+
 
 // var knex = require('knex')({
 //   client: 'sqlite3',
@@ -41,7 +51,6 @@ db.connect('mongodb://localhost/mtdb');
 //   }
 // });
 
-module.exports = db;
 
 
 
